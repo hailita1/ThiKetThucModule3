@@ -1,0 +1,30 @@
+<h1 class="table text-center">Danh sách đọc</h1>
+<form [formGroup]="bookForm" (ngSubmit)="addBook()">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Nhập tên sách"
+           aria-label="Recipient's username" aria-describedby="button-addon2" formControlName="name">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="submit" id="button-addon2"
+              style="width: 200px; background-color: chartreuse">Thêm
+      </button>
+    </div>
+  </div>
+</form>
+<div *ngIf="failMessage" class="alert alert-danger"></div>
+<p>{{failMessage}}</p>
+<table class="table text-center">
+  <thead>
+  <tr class="text-center">
+    <td><h2>Tên sách</h2></td>
+    <td><h2>Hành động</h2></td>
+  </tr>
+  </thead>
+  <tbody *ngFor="let item of bookList">
+  <tr *ngIf="item.read == false">
+    <td>{{item.name}}</td>
+    <td>
+      <button class="btn btn-primary" (click)="readBook(item.id)">Đọc</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

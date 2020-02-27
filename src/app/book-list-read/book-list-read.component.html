@@ -1,0 +1,21 @@
+<div *ngIf="failMessage" class="alert alert-danger">
+  <p>{{failMessage}}</p>
+</div>
+<form [formGroup]="bookForm"><
+  <table class="table text-center">
+    <thead>
+    <tr class="text-center">
+      <td><h2>Tên sách</h2></td>
+      <td><h2>Hành động</h2></td>
+    </tr>
+    </thead>
+    <tbody *ngFor="let item of bookList">
+    <tr *ngIf="item.read == true">
+      <td>{{item.name}}</td>
+      <td>
+        <button class="btn btn-primary" (click)="readBook(item.id)">Đọc</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</form>
